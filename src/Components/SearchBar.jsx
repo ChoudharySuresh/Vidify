@@ -5,7 +5,7 @@ const SearchBar = () => {
   return (
     <>
       <div className="flex items-center gap-6">
-        <div className="flex justify-between items-center w-[30rem] lg:w-[42rem]">
+        <div className="flex justify-between items-center w-[30rem] lg:w-[40rem]">
           <input
             type="text"
             placeholder="Search"
