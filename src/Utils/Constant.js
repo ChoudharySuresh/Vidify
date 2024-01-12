@@ -103,10 +103,30 @@ export const ExploreMenu = [
   },
 ];
 
-// export const CloseMenu = [
-//   {
-//     id: 1,
-//     logo: GoHomeFill,
-//     name: "Home",
-//   },
-// ];
+export const btnValues = [
+  "All",
+  "Gaming",
+  "programming",
+  "React",
+  "Redux",
+  "Music",
+  "News",
+  "Trailers",
+  "Comedy",
+  "Cars",
+  "Laptops",
+  "Bolloywood",
+  "Gadgets",
+  "Podcasts",
+  "Games",
+  "GTAV",
+  "PC",
+  "Intel",
+  "AMD",
+  "GPU",
+  "RAM",
+  "RGB",
+  "JS",
+  "C++",
+  "OOPs",
+];

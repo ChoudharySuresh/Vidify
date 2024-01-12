@@ -1,9 +1,12 @@
+import ButtonCarousel from "../Components/ButtonCarousel";
+
 const MainContainer = () => {
   return (
-    <div className="bg-green-300 w-full">
-      <h1>Main Container</h1>
+    <div className="w-[95%] md:w-[70%] lg:w-[78%]">
+      <ButtonCarousel />
     </div>
   );
 };
+//
 
 export default MainContainer;

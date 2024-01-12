@@ -20,7 +20,7 @@ const Header = () => {
     <>
       {/* Navbar for Mobile  */}
 
-      <div className="flex items-center justify-between relative">
+      <div className="flex items-center justify-between relative md:mt-4 lg:mt-0">
         <div className="flex items-center gap-1 cursor-pointer">
           <div className="hidden md:block p-2 rounded-full hover:bg-[#272727] ">
             <IoIosMenu className="text-3xl" onClick={handleMenuClick} />
@@ -49,7 +49,7 @@ const Header = () => {
             <div className="hidden md:block p-2 rounded-full hover:bg-[#606060] cursor-pointer">
               <FaRegBell className="text-2xl" />
             </div>
-            <FaRegUserCircle className="text-2xl md:text-3xl" />
+            <FaRegUserCircle className="text-2xl md:text-3xl lg:mr-2" />
           </div>
         </div>
       </div>
