@@ -8,6 +8,10 @@ import MobileSearchBar from "./MobileSearchBar";
 import { useState } from "react";
 import { toggleMenu } from "../Store/Slice/appslice";
 import { useDispatch } from "react-redux";
+import Dropdown, { DropdownItem } from "./Dropdown";
+import { CiLogin, CiLogout } from "react-icons/ci";
+import { useAuth0 } from "@auth0/auth0-react";
+import AuthUserInfo from "./AuthUserInfo";
 
 const Header = () => {
   const [mobileSearchBar, setMobileSearchBar] = useState(false);
@@ -16,6 +20,9 @@ const Header = () => {
   const handleMenuClick = () => {
     dispatch(toggleMenu());
   };
+
+  // Auth0 hook
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   return (
     <>
       {/* Navbar for Mobile  */}
@@ -49,7 +56,45 @@ const Header = () => {
             <div className="hidden md:block p-2 rounded-full hover:bg-[#606060] cursor-pointer">
               <FaRegBell className="text-2xl" />
             </div>
-            <FaRegUserCircle className="text-2xl md:text-3xl lg:mr-2" />
+
+            <Dropdown
+              trigger={
+                isAuthenticated ? (
+                  <img
+                    src={user.picture}
+                    alt="picture"
+                    className="w-8 rounded-full cursor-pointer"
+                  />
+                ) : (
+                  <FaRegUserCircle className="text-2xl md:text-3xl lg:mr-2 cursor-pointer" />
+                )
+              }
+            >
+              {isAuthenticated ? (
+                <DropdownItem>
+                  <AuthUserInfo userInfo={user} />
+                </DropdownItem>
+              ) : null}
+
+              {isAuthenticated ? (
+                <button className="w-[100%]" onClick={() => logout()}>
+                  <DropdownItem>
+                    <CiLogout size="1.5rem" color="white" /> Logout
+                  </DropdownItem>
+                </button>
+              ) : (
+                <button
+                  className="w-[100%]"
+                  onClick={() => loginWithRedirect()}
+                >
+                  <DropdownItem>
+                    <CiLogin size="1.5rem" color="white" /> Login
+                  </DropdownItem>
+                </button>
+              )}
+
+              <DropdownItem>Appearence</DropdownItem>
+            </Dropdown>
           </div>
         </div>
       </div>
