@@ -92,8 +92,6 @@ const Header = () => {
                   </DropdownItem>
                 </button>
               )}
-
-              <DropdownItem>Appearence</DropdownItem>
             </Dropdown>
           </div>
         </div>

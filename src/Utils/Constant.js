@@ -130,3 +130,5 @@ export const btnValues = [
   "C++",
   "OOPs",
 ];
+
+export const API_KEY = "AIzaSyBZvXSuGUi0k42jlR4JZ9rCMdX-NHNiWco";
