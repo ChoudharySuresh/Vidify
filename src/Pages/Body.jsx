@@ -5,9 +5,8 @@ import CloseSideBar from "../Components/CloseSideBar";
 
 const Body = () => {
   const menu = useSelector((store) => store.app.isSideBarOpen);
-  // console.log(menu);
   return (
-    <div className="flex items-start gap-8 md:my-4">
+    <div className="flex items-start gap-8 md:my-4 relative">
       {menu ? <SideBar /> : <CloseSideBar />}
       <MainContainer />
     </div>

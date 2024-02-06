@@ -27,7 +27,7 @@ const Header = () => {
     <>
       {/* Navbar for Mobile  */}
 
-      <div className="flex items-center justify-between relative md:mt-4 lg:mt-0">
+      <div className="flex items-center justify-between bg-black z-30 md:mt-4 lg:mt-0 sticky top-0">
         <div className="flex items-center gap-1 cursor-pointer">
           <div className="hidden md:block p-2 rounded-full hover:bg-[#272727] ">
             <IoIosMenu className="text-3xl" onClick={handleMenuClick} />

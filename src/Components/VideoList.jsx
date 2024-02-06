@@ -1,43 +1,66 @@
-import { useEffect, useState } from "react";
-import { fetchVideos } from "../Store/Slice/dataslice";
-import { useDispatch, useSelector } from "react-redux";
-import VideoCard from "./VideoCard";
+import { useEffect } from "react";
+import { useState } from "react";
 import { API_KEY } from "../Utils/Constant";
+import VideoCard from "./VideoCard";
+import useScrollbarBottom from "../hooks/useScrollbarBottom";
+import Shimmer from "./Shimmer";
 
 const VideoList = () => {
-  const { data } = useSelector((state) => state.data);
-  // console.log(data);
-  const [channelData, setChannelData] = useState([]);
-  const channelLogo = data.map((item) => item.snippet.channelId);
+  const [allVideos, setAllVideos] = useState([]);
+  const [nextPageToken, setNextPageToken] = useState("");
+  const [scrollEnd, setIsScrollEnd] = useScrollbarBottom();
 
+  // Initial Videos Data
+  const getVideos = async () => {
+    const response = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=IN&key=${API_KEY}`
+    );
+    const jsonResponse = await response.json();
+    setNextPageToken(jsonResponse?.nextPageToken);
+    setAllVideos(jsonResponse?.items);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const promise = channelLogo.map(async (id) => {
-        const channelData = await fetch(
-          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${API_KEY}`
-        );
-        const jsonData = await channelData.json();
-        return jsonData;
-      });
-
-      const results = await Promise.all(promise);
-      setChannelData(results);
-    };
-    fetchData();
-  }, [data]);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchVideos());
+    getVideos();
   }, []);
+
+  // Fetching More Videos For Infinite scroll
+  const getMoreVideos = async () => {
+    setIsScrollEnd(false);
+    const response = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=15&key=${API_KEY}&pageToken=${nextPageToken}`
+    );
+    const jsonResponse = await response.json();
+    setNextPageToken(jsonResponse?.nextPageToken);
+
+    const moreVideos = jsonResponse?.items;
+    setAllVideos([...allVideos, ...moreVideos]);
+  };
+  // Calling GetMoreVideo Function When Scrollbar is at End
+  useEffect(() => {
+    if (scrollEnd) {
+      if (nextPageToken) {
+        getMoreVideos();
+      }
+    }
+    return () => {};
+  }, [scrollEnd]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="flex flex-wrap gap-4">
-      {data.map((item, index) => {
-        return (
-          <VideoCard info={item} key={index} channelData={channelData[index]} />
-        );
-      })}
-    </div>
+    <>
+      <div className="flex flex-wrap gap-4">
+        {allVideos.length === 0 ? (
+          <Shimmer />
+        ) : (
+          allVideos?.map((video) => {
+            return <VideoCard key={video.id} info={video} />;
+          })
+        )}
+      </div>
+    </>
   );
 };
 
