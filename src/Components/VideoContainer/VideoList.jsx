@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { API_KEY } from "../Utils/Constant";
+import { API_KEY } from "../../Utils/Constant";
 import VideoCard from "./VideoCard";
-import useScrollbarBottom from "../hooks/useScrollbarBottom";
-import Shimmer from "./Shimmer";
+import useScrollbarBottom from "../../hooks/useScrollbarBottom";
+import Shimmer from "../Shimmer/Shimmer";
+import { Link } from "react-router-dom";
 
 const VideoList = () => {
   const [allVideos, setAllVideos] = useState([]);
@@ -56,7 +57,11 @@ const VideoList = () => {
           <Shimmer />
         ) : (
           allVideos?.map((video) => {
-            return <VideoCard key={video.id} info={video} />;
+            return (
+              <Link key={video.id} to={"/watch?v=" + video.id}>
+                <VideoCard info={video} />
+              </Link>
+            );
           })
         )}
       </div>

@@ -1,5 +1,5 @@
-import ButtonCarousel from "../Components/ButtonCarousel";
-import VideoList from "../Components/VideoList";
+import ButtonCarousel from "../Components/Carousel/ButtonCarousel";
+import VideoList from "../Components/VideoContainer/VideoList";
 
 const MainContainer = () => {
   return (

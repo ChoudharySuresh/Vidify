@@ -1,4 +1,4 @@
-import { SideBarMenu } from "../Utils/Constant";
+import { SideBarMenu } from "../../Utils/Constant";
 import CloseSingleMenuOption from "./CloseSingleMenuOption";
 const CloseSideBar = () => {
   const MenuArray = SideBarMenu.filter((item) => item.id <= 3);

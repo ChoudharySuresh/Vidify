@@ -1,5 +1,5 @@
 import SingleButton from "./SingleButton";
-import { btnValues } from "../Utils/Constant";
+import { btnValues } from "../../Utils/Constant";
 
 const ButtonCarousel = () => {
   return (

@@ -5,6 +5,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { Auth0Provider } from "@auth0/auth0-react";
 import store from "./Store/store.js";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         }}
       >
         <Provider store={store}>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </Provider>
       </Auth0Provider>
     </div>

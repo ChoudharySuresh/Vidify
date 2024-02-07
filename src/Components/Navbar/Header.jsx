@@ -1,4 +1,5 @@
-import logo from "../Images/YouTube-White.svg";
+import logo from "../../Images/YouTube-White.svg";
+import YTPlayLogo from "../../Images/YTLogo.png";
 import { IoIosSearch } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
@@ -6,12 +7,13 @@ import { FaRegBell } from "react-icons/fa";
 import SearchBar from "./SearchBar";
 import MobileSearchBar from "./MobileSearchBar";
 import { useState } from "react";
-import { toggleMenu } from "../Store/Slice/appslice";
+import { toggleMenu } from "../../Store/Slice/appslice";
 import { useDispatch } from "react-redux";
-import Dropdown, { DropdownItem } from "./Dropdown";
+import Dropdown, { DropdownItem } from "../Dropdown/Dropdown";
 import { CiLogin, CiLogout } from "react-icons/ci";
 import { useAuth0 } from "@auth0/auth0-react";
-import AuthUserInfo from "./AuthUserInfo";
+import AuthUserInfo from "../Dropdown/AuthUserInfo";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [mobileSearchBar, setMobileSearchBar] = useState(false);
@@ -32,11 +34,17 @@ const Header = () => {
           <div className="hidden md:block p-2 rounded-full hover:bg-[#272727] ">
             <IoIosMenu className="text-3xl" onClick={handleMenuClick} />
           </div>
-          <img
-            src={logo}
-            alt="logo"
-            className="w-[7rem] md:hidden lg:block lg:w-[8rem]"
-          />
+          <Link to="/">
+            <img
+              src={logo}
+              alt="logo"
+              className="w-[7rem] md:hidden lg:block lg:w-[8rem]"
+            />
+            <img
+              src={YTPlayLogo}
+              className="hidden md:block lg:hidden w-[3rem]"
+            />
+          </Link>
         </div>
 
         {/* SearchBar for Larger Devices  */}

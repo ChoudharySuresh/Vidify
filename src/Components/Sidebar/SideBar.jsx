@@ -1,6 +1,6 @@
-import { SideBarMenu } from "../Utils/Constant";
+import { SideBarMenu } from "../../Utils/Constant";
 import SingleMenuOption from "./SingleMenuOption";
-import { ExploreMenu } from "../Utils/Constant";
+import { ExploreMenu } from "../../Utils/Constant";
 const SideBar = () => {
   return (
     <div className="md:w-[32%] lg:w-[16%] hidden md:flex flex-col gap-1 sticky top-0 left-0 bg-black h-screen overflow-y-auto scrollbar-thumb-slate-300  scrollbar-thin scrollbar-track-black">

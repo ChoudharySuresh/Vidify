@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { formatViewCount, timeAgo } from "../Utils/helperFunction";
-import { API_KEY } from "../Utils/Constant";
+import { formatViewCount, timeAgo } from "../../Utils/helperFunction";
+import { API_KEY } from "../../Utils/Constant";
 
 const VideoCard = ({ info }) => {
   const thumbnail = info.snippet.thumbnails.medium;

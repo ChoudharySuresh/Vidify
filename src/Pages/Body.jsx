@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import SideBar from "../Components/SideBar";
+import SideBar from "../Components/Sidebar/SideBar";
 import MainContainer from "./MainContainer";
-import CloseSideBar from "../Components/CloseSideBar";
+import CloseSideBar from "../Components/Sidebar/CloseSideBar";
 
 const Body = () => {
   const menu = useSelector((store) => store.app.isSideBarOpen);
