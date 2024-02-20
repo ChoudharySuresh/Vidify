@@ -52,7 +52,7 @@ const VideoList = () => {
 
   return (
     <>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4 mt-3">
         {allVideos.length === 0 ? (
           <Shimmer />
         ) : (
