@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { API_KEY } from "../../Utils/Constant";
 import ChannelData from "./ChannelData";
 import { formatViewCount, timeAgo } from "../../Utils/helperFunction";
+import Description from "./Description";
 
 const VideoDetails = ({ videoId }) => {
   const [videoDetails, setVideoDetails] = useState({
@@ -11,6 +12,7 @@ const VideoDetails = ({ videoId }) => {
     likeCount: "",
     viewCount: "",
     publishedAt: "",
+    description: "",
   });
 
   const getVideoDetails = async () => {
@@ -25,18 +27,20 @@ const VideoDetails = ({ videoId }) => {
       channelId: item?.channelId,
       channelTitle: item?.channelTitle,
       publishedAt: item?.publishedAt,
+      description: item?.description,
       likeCount: JSONResponse?.items[0]?.statistics?.likeCount,
       viewCount: JSONResponse?.items[0]?.statistics?.viewCount,
     });
   };
 
+  // console.log(videoDetails.description);
   useEffect(() => {
     getVideoDetails();
   }, []);
 
   return (
     <>
-      <div>
+      <div className="flex flex-col gap-4">
         {/* Upper Channel Data  */}
         <div className="lg:flex lg:flex-col lg:gap-4">
           <h1 className="font-bold text-2xl">{videoDetails.videoTitle}</h1>
@@ -47,7 +51,13 @@ const VideoDetails = ({ videoId }) => {
           <ChannelData info={videoDetails} />
         </div>
         {/* Description */}
-        <div></div>
+        <div>
+          <Description
+            description={videoDetails?.description}
+            viewCount={videoDetails.viewCount}
+            publishedAt={videoDetails.publishedAt}
+          />
+        </div>
       </div>
     </>
   );

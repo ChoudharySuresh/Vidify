@@ -20,7 +20,7 @@ const formatSubscriberCount = (count) => {
 };
 
 const ChannelData = ({ info }) => {
-  console.log(info);
+  // console.log(info);
 
   const truncateTitle = (title) => {
     if (title.length >= 10) {
@@ -33,7 +33,7 @@ const ChannelData = ({ info }) => {
   const url = useChannelLogo(info.channelId);
 
   const subscribers = useSubScriberCount(info.channelId);
-  console.log(subscribers?.statistics?.subscriberCount);
+  // console.log(subscribers?.statistics?.subscriberCount);
   return (
     <>
       <div className="flex flex-col justify-between gap-4 lg:flex-row">
@@ -71,7 +71,7 @@ const ChannelData = ({ info }) => {
           </button>
         </div>
         {/* Right Buttons Part */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 ">
           {/* Like Button */}
           <div className="flex items-center bg-[rgba(255,255,255,0.1)] rounded-full">
             <button className="flex items-center gap-2 px-3 py-2 rounded-l-full hover:bg-[#4B4947]">

@@ -1,10 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import VideoDetails from "../Components/Videodetails/VideoDetails";
+import Comment from "../Components/Videodetails/Comment/Comment";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("v");
-  console.log(id);
+  // console.log(id);
   return (
     <>
       <div className="flex flex-col gap-5 my-4 lg:flex-row lg:gap-8 md:px-4 xl:px-12">
@@ -21,7 +22,7 @@ const WatchPage = () => {
             <VideoDetails videoId={id} />
           </div>
           <div className="md:w-full  lg:w-[40rem]  xl:w-[57.125rem] ">
-            <h1>Comments Component</h1>
+            <Comment videoId={id} />
           </div>
         </div>
         {/* Second Column */}

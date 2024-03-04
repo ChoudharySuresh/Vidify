@@ -5,7 +5,7 @@ import { FaMicrophone } from "react-icons/fa";
 const MobileSearchBar = ({ data }) => {
   return (
     <>
-      <div className="bg-[#383838] flex items-center justify-between gap-4 px-2 py-1 absolute top-6 left-0 w-full md:hidden">
+      <div className="bg-[#383838] flex items-center justify-between gap-4 px-2 py-1 absolute top-6 left-0 z-20 w-full md:hidden">
         <IoArrowBack className="text-2xl" onClick={() => data(false)} />
 
         <div className="flex justify-between items-center w-[90%]">
