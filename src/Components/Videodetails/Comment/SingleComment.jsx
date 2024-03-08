@@ -1,15 +1,19 @@
 import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
-import { BiSolidDownArrow } from "react-icons/bi";
+import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
 import { timeAgo } from "../../../Utils/helperFunction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { toggleReplyButton } from "../../../Store/Slice/commentslice";
 const SingleComment = ({ comment }) => {
   const dispatch = useDispatch();
-  const handleReplyButton = (event) => {
+  const handleReplyButton = () => {
     dispatch(toggleReplyButton({ commentId: comment.id }));
-    event.stopPropagation();
   };
+
+  const replyButtonStates = useSelector(
+    (store) => store.comments.replyButtonStates
+  );
+
   return (
     <>
       <div className="flex gap-4 my-3">
@@ -68,7 +72,11 @@ const SingleComment = ({ comment }) => {
                     onClick={handleReplyButton}
                     className=" px-3 py-2 rounded-full hover:bg-[#142e57] flex items-center gap-4"
                   >
-                    <BiSolidDownArrow className="text-[#3ea6ff]" />
+                    {replyButtonStates[comment.id] ? (
+                      <BiSolidUpArrow className="text-[#3ea6ff]" />
+                    ) : (
+                      <BiSolidDownArrow className="text-[#3ea6ff]" />
+                    )}
                     <p className="text-[#3ea6ff]">
                       {comment?.replies?.comments?.length} Replies
                     </p>

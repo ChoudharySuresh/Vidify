@@ -35,3 +35,7 @@ export const timeAgo = (dateString) => {
     return `${year} year ago`;
   }
 };
+
+export const formateCommentsCount = (commentCount) => {
+  return new Intl.NumberFormat("en-IN").format(commentCount);
+};
