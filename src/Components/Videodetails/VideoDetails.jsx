@@ -20,7 +20,7 @@ const VideoDetails = ({ videoId }) => {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
     );
     const JSONResponse = await response.json();
-    // console.log(JSONResponse?.items[0]);
+    console.log(JSONResponse?.items[0]);
     const item = JSONResponse?.items[0].snippet;
     setVideoDetails({
       videoTitle: item?.title,

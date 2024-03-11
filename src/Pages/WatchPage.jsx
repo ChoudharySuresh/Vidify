@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import VideoDetails from "../Components/Videodetails/VideoDetails";
 import Comment from "../Components/Videodetails/Comment/Comment";
+import Recommendation from "../Components/Videodetails/Recommendation/Recommendation";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -26,7 +27,9 @@ const WatchPage = () => {
           </div>
         </div>
         {/* Second Column */}
-        <div>Recommendation Component</div>
+        <div>
+          <Recommendation videoId={id} />
+        </div>
       </div>
     </>
   );
