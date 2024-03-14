@@ -48,12 +48,12 @@ const VideoList = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []); 
+  }, []);
 
   return (
     <>
       <div className="flex flex-wrap gap-4 mt-3">
-        {allVideos.length === 0 ? (
+        {allVideos?.length === 0 ? (
           <Shimmer />
         ) : (
           allVideos?.map((video) => {

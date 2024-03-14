@@ -6,6 +6,7 @@ import Recommendation from "../Components/Videodetails/Recommendation/Recommenda
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("v");
+
   // console.log(id);
   return (
     <>

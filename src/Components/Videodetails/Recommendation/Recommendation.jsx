@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_KEY } from "../../../Utils/Constant";
 import RecommendationCard from "./RecommendationCard";
+import { Link } from "react-router-dom";
 
 const Recommendation = ({ videoId }) => {
   const [videoTitle, setVideoTitle] = useState(null);
@@ -38,7 +39,11 @@ const Recommendation = ({ videoId }) => {
     <>
       <div>
         {recommandation?.map((item) => {
-          return <RecommendationCard key={item?.id?.videoId} info={item} />;
+          return (
+            <Link to={"/watch?v=" + item?.id?.videoId} key={item?.id?.videoId}>
+              <RecommendationCard info={item} />
+            </Link>
+          );
         })}
       </div>
     </>

@@ -39,3 +39,18 @@ export const timeAgo = (dateString) => {
 export const formateCommentsCount = (commentCount) => {
   return new Intl.NumberFormat("en-IN").format(commentCount);
 };
+
+export const trucateText = (str, length, ending) => {
+  if (length == null) {
+    length = 100;
+  }
+  if (ending == null) {
+    ending = "...";
+  }
+
+  if (str.length > length) {
+    return str.substring(0, length - ending.length) + ending;
+  } else {
+    return str;
+  }
+};
