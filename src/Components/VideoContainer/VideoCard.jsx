@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { formatViewCount, timeAgo } from "../../Utils/helperFunction";
-import { API_KEY } from "../../Utils/Constant";
+// import { API_KEY } from "../../Utils/Constant";
 
 const VideoCard = ({ info }) => {
   const thumbnail = info.snippet.thumbnails.medium;
@@ -11,7 +11,9 @@ const VideoCard = ({ info }) => {
 
   const getChannelDetails = async () => {
     const response = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${API_KEY}`
+      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${
+        import.meta.env.VITE_API_KEY
+      }`
     );
     const jsonResponse = await response.json();
     setChannelDetails(jsonResponse?.items[0]);

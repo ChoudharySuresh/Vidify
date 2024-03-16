@@ -2,22 +2,7 @@ import useChannelLogo from "../../hooks/useChannelLogo";
 import useSubScriberCount from "../../hooks/useSubScriberCount";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { PiShareFatLight } from "react-icons/pi";
-
-const formatSubscriberCount = (count) => {
-  const thousand = 1000;
-  const million = 1000000;
-  const billion = 1000000000;
-
-  if (count < thousand) {
-    return count.toString();
-  } else if (count < million) {
-    return (count / thousand).toFixed(0) + "K";
-  } else if (count < billion) {
-    return (count / million).toFixed(1) + "M";
-  } else {
-    return (count / billion).toFixed(1) + "B";
-  }
-};
+import { formatSubscriberCount } from "../../Utils/helperFunction";
 
 const ChannelData = ({ info }) => {
   // console.log(info);

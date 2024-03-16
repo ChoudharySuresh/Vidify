@@ -130,10 +130,3 @@ export const btnValues = [
   "C++",
   "OOPs",
 ];
-
-export const API_KEY = "AIzaSyD9ZhVX3RjWfrQHuvWglpeF8fIcysLxv7Y";
-// Watchpage VideoDetails
-// https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=4sHlCovj-Ik&key=AIzaSyBZvXSuGUi0k42jlR4JZ9rCMdX-NHNiWco
-
-// Subscriber count
-// https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCt2JXOLNxqry7B_4rRZME3Q&key=AIzaSyBZvXSuGUi0k42jlR4JZ9rCMdX-NHNiWco

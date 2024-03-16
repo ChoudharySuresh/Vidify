@@ -54,3 +54,19 @@ export const trucateText = (str, length, ending) => {
     return str;
   }
 };
+
+export const formatSubscriberCount = (count) => {
+  const thousand = 1000;
+  const million = 1000000;
+  const billion = 1000000000;
+
+  if (count < thousand) {
+    return count.toString();
+  } else if (count < million) {
+    return (count / thousand).toFixed(0) + "K";
+  } else if (count < billion) {
+    return (count / million).toFixed(1) + "M";
+  } else {
+    return (count / billion).toFixed(1) + "B";
+  }
+};

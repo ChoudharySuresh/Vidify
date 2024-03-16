@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { API_KEY } from "../../../Utils/Constant";
+// import { API_KEY } from "../../../Utils/Constant";
 import SingleComment from "./SingleComment";
 import SingleReplyComment from "./SingleReplyComment";
 import { useSelector } from "react-redux";
@@ -66,7 +66,9 @@ const Comment = ({ videoId }) => {
 
   async function getComments() {
     const response = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&order=relevance&textFormat=plainText&videoId=${videoId}&key=${API_KEY}`
+      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&order=relevance&textFormat=plainText&videoId=${videoId}&key=${
+        import.meta.env.VITE_API_KEY
+      }`
     );
     const jsonData = await response.json();
     // console.log(jsonData);
@@ -78,7 +80,9 @@ const Comment = ({ videoId }) => {
   const getMoreComments = async () => {
     setIsScrollEnd(false);
     const response = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&order=relevance&textFormat=plainText&videoId=${videoId}&key=${API_KEY}&nextPageToken=${nextPageToken}`
+      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&order=relevance&textFormat=plainText&videoId=${videoId}&key=${
+        import.meta.env.VITE_API_KEY
+      }&nextPageToken=${nextPageToken}`
     );
     const jsonResponse = await response?.json();
     setNextPageToken(jsonResponse?.nextPageToken);
@@ -102,7 +106,9 @@ const Comment = ({ videoId }) => {
   //Fetching Comments Count from API
   const getCommentCount = async () => {
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${API_KEY}`
+      `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${
+        import.meta.env.VITE_API_KEY
+      }`
     );
 
     const jsonResponse = await response.json();
@@ -110,7 +116,7 @@ const Comment = ({ videoId }) => {
   };
 
   return (
-    <div>
+    <div className="hidden lg:block">
       <h1 className="text-xl font-bold py-4">
         {formateCommentsCount(commentsCount)} Comments
       </h1>
