@@ -11,7 +11,7 @@ const VideoList = () => {
   const [nextPageToken, setNextPageToken] = useState("");
   const [scrollEnd, setIsScrollEnd] = useScrollbarBottom();
 
-  console.log(import.meta.env.VITE_API_KEY);
+  // console.log(import.meta.env.VITE_API_KEY);
   // Initial Videos Data
   const getVideos = async () => {
     const response = await fetch(

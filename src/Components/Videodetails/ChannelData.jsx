@@ -72,7 +72,7 @@ const ChannelData = ({ info }) => {
           </div>
           {/* Share Button */}
           <div>
-            <button className="flex items-center gap-2 bg-[rgba(255,255,255,0.1)] px-3 py-2 rounded-full">
+            <button className="flex items-center gap-2 bg-[rgba(255,255,255,0.1)] px-3 py-2 rounded-full hover:bg-[#4B4947]">
               <PiShareFatLight className="text-2xl" />
               <p className="text-lg">Share</p>
             </button>
