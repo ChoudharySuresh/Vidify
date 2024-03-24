@@ -16,6 +16,7 @@ import { CiLogin, CiLogout } from "react-icons/ci";
 import { useAuth0 } from "@auth0/auth0-react";
 import AuthUserInfo from "../Dropdown/AuthUserInfo";
 import { Link } from "react-router-dom";
+import { data } from "autoprefixer";
 
 const Header = () => {
   const [mobileSearchBar, setMobileSearchBar] = useState(false);
@@ -54,6 +55,11 @@ const Header = () => {
     const data = await response.json();
     setSuggestion(data[1]);
   };
+
+  const handleSuggestionClick = (value) => {
+    setQuery(value);
+    setShowSuggestions(false);
+  };
   return (
     <>
       {/* Navbar for Mobile  */}
@@ -85,7 +91,7 @@ const Header = () => {
                 placeholder="Search"
                 onChange={handleInput}
                 onFocus={() => setShowSuggestions(true)}
-                onBlur={() => setShowSuggestions(false)}
+                // onBlur={() => setShowSuggestions(false)}
                 value={query}
                 className=" px-6 py-2 w-[100%] border border-slate-300 bg-black rounded-l-full outline-none focus:border-blue-400"
               />
@@ -151,17 +157,19 @@ const Header = () => {
           </div>
         </div>
       </div>
-
-      {showSuggestions && !query == "" && (
-        <div className="bg-[hsl(0,0%,18.82%)] absolute md:w-[28rem] lg:w-[30rem] xl:w-[35rem] md:left-[15%] lg:left-[20%] xl:left-[30%] rounded-2xl z-50">
-          <ul className="my-4 ">
+      {showSuggestions && query.length > 0 && (
+        <div className="absolute left-[30%] w-[40%] bg-[hsl(0,0%,18.82%)] z-50 rounded-xl">
+          <ul className="my-4">
             {suggestion.map((s) => {
               return (
                 <li
-                  className="px-4 py-1 cursor-pointer flex items-center gap-4 text-lg hover:bg-[#4B4947]"
+                  className="px-3 py-2 flex gap-4 cursor-pointer hover:bg-[#4B4947]"
                   key={s}
+                  onClick={() => handleSuggestionClick(s)}
                 >
-                  <IoSearchOutline />
+                  <div>
+                    <IoSearchOutline className="text-2xl" />
+                  </div>
                   {s}
                 </li>
               );
