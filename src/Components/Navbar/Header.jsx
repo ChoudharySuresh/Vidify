@@ -4,7 +4,7 @@ import { IoIosSearch } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
 import { FaRegBell } from "react-icons/fa";
-// import SearchBar from "./SearchBar";
+import SearchBar from "./SearchBar";
 import MobileSearchBar from "./MobileSearchBar";
 import { useEffect, useState } from "react";
 import { toggleMenu } from "../../Store/Slice/appslice";
@@ -16,7 +16,7 @@ import { CiLogin, CiLogout } from "react-icons/ci";
 import { useAuth0 } from "@auth0/auth0-react";
 import AuthUserInfo from "../Dropdown/AuthUserInfo";
 import { Link } from "react-router-dom";
-import { data } from "autoprefixer";
+import SuggestionList from "./SuggestionList";
 
 const Header = () => {
   const [mobileSearchBar, setMobileSearchBar] = useState(false);
@@ -30,36 +30,36 @@ const Header = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
 
   // Search
-  const [query, setQuery] = useState("");
-  const [suggestion, setSuggestion] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  // const [query, setQuery] = useState("");
+  // const [suggestion, setSuggestion] = useState([]);
+  // const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const handleInput = (e) => {
-    setQuery(e.target.value);
-  };
+  // const handleInput = (e) => {
+  //   setQuery(e.target.value);
+  // };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      getSearchSuggestions();
-    }, 200);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     getSearchSuggestions();
+  //   }, 200);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [query]);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [query]);
 
-  const getSearchSuggestions = async () => {
-    const response = await fetch(
-      `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`
-    );
-    const data = await response.json();
-    setSuggestion(data[1]);
-  };
+  // const getSearchSuggestions = async () => {
+  //   const response = await fetch(
+  //     `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`
+  //   );
+  //   const data = await response.json();
+  //   setSuggestion(data[1]);
+  // };
 
-  const handleSuggestionClick = (value) => {
-    setQuery(value);
-    setShowSuggestions(false);
-  };
+  // const handleSuggestionClick = (value) => {
+  //   setQuery(value);
+  //   setShowSuggestions(false);
+  // };
   return (
     <>
       {/* Navbar for Mobile  */}
@@ -84,7 +84,7 @@ const Header = () => {
 
         {/* SearchBar for Larger Devices  */}
         <div className="hidden md:block">
-          <div className="flex items-center gap-6">
+          {/* <div className="flex items-center gap-6">
             <div className="flex justify-between items-center w-[30rem] lg:w-[40rem]">
               <input
                 type="text"
@@ -103,7 +103,8 @@ const Header = () => {
             <div className="hover:bg-[#606060] bg-[#222222] p-3 mr-2 rounded-full cursor-pointer">
               <FaMicrophone className="text-lg" />
             </div>
-          </div>
+          </div> */}
+          <SearchBar />
         </div>
         <div className="flex items-center gap-8">
           <IoIosSearch
@@ -157,7 +158,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {showSuggestions && query.length > 0 && (
+      {/* Suggestion List UI */}
+      {/* {showSuggestions && query.length > 0 && (
         <div className="absolute left-[30%] w-[40%] bg-[hsl(0,0%,18.82%)] z-50 rounded-xl">
           <ul className="my-4">
             {suggestion.map((s) => {
@@ -176,7 +178,8 @@ const Header = () => {
             })}
           </ul>
         </div>
-      )}
+      )} */}
+      <SuggestionList />
     </>
   );
 };

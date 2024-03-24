@@ -1,14 +1,24 @@
 import { IoIosSearch } from "react-icons/io";
 import { FaMicrophone } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import {
+  setSearchValue,
+  setSearchSuggestion,
+  setShowSuggestionList,
+} from "../../Store/Slice/SearchSlice";
 
+import { useDispatch, useSelector } from "react-redux";
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
-  const [suggestion, setSuggestion] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  // const [query, setQuery] = useState("");
+
+  const dispatch = useDispatch();
+
+  const Searchvalue = useSelector((store) => store.search.searchValue);
 
   const handleInput = (e) => {
-    setQuery(e.target.value);
+    // setQuery(e.target.value);
+    // query lefts one character in redux store search Value
+    dispatch(setSearchValue(e.target.value));
   };
 
   useEffect(() => {
@@ -19,14 +29,14 @@ const SearchBar = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [query]);
+  }, [Searchvalue]);
 
   const getSearchSuggestions = async () => {
     const response = await fetch(
-      `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`
+      `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${Searchvalue}`
     );
     const data = await response.json();
-    setSuggestion(data[1]);
+    dispatch(setSearchSuggestion(data[1]));
   };
 
   return (
@@ -37,7 +47,8 @@ const SearchBar = () => {
             type="text"
             placeholder="Search"
             onChange={handleInput}
-            value={query}
+            value={Searchvalue}
+            onFocus={() => dispatch(setShowSuggestionList(true))}
             className=" px-6 py-2 w-[100%] border border-slate-300 bg-black rounded-l-full outline-none focus:border-blue-400"
           />
           <div className="bg-[#222222] border border-l-0 border-gray-300 rounded-r-full p-2 cursor-pointer">
