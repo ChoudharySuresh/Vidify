@@ -3,9 +3,10 @@ export const formatViewCount = (count) => {
     return `${(count / 1e6).toFixed(1)}M`;
   } else if (count >= 1e3) {
     return `${(count / 1e3).toFixed(0)}K`;
-  } else {
-    return count.toString();
   }
+  // else {
+  //   return count.toString();
+  // }
 };
 
 export const timeAgo = (dateString) => {

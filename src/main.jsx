@@ -5,8 +5,32 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { Auth0Provider } from "@auth0/auth0-react";
 import store from "./Store/store.js";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import VideoList from "./Components/VideoContainer/VideoList.jsx";
+import WatchPage from "./Pages/WatchPage.jsx";
+import SearchResults from "./Pages/SearchResults.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <VideoList />,
+      },
+      {
+        path: "/search",
+        element: <SearchResults />,
+      },
+    ],
+  },
+  {
+    path: "/watch",
+    element: <WatchPage />,
+  },
+]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <div className="mx-4">
@@ -18,9 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         }}
       >
         <Provider store={store}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <RouterProvider router={router} />
         </Provider>
       </Auth0Provider>
     </div>

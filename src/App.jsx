@@ -6,10 +6,11 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
+      <Body />
+      {/* <Routes>
         <Route path="/" element={<Body />} />
         <Route path="/watch" element={<WatchPage />} />
-      </Routes>
+      </Routes> */}
     </>
   );
 }
