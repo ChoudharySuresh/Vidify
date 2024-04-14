@@ -104,29 +104,48 @@ export const ExploreMenu = [
 ];
 
 export const btnValues = [
-  "All",
-  "Gaming",
-  "programming",
-  "React",
-  "Redux",
-  "Music",
-  "News",
-  "Trailers",
-  "Comedy",
-  "Cars",
-  "Laptops",
-  "Bolloywood",
-  "Gadgets",
-  "Podcasts",
-  "Games",
-  "GTAV",
-  "PC",
-  "Intel",
-  "AMD",
-  "GPU",
-  "RAM",
-  "RGB",
-  "JS",
-  "C++",
-  "OOPs",
+  {
+    id: 1,
+    category: "All",
+  },
+  {
+    id: 2,
+    category: "Javascript",
+  },
+  {
+    id: 3,
+    category: "React",
+  },
+  {
+    id: 4,
+    category: "Next.js",
+  },
+  {
+    id: 5,
+    category: "Programming",
+  },
+  {
+    id: 6,
+    category: "Music",
+  },
+  {
+    id: 7,
+    category: "Entertainment",
+  },
+  {
+    id: 8,
+    category: "Sports",
+  },
+  {
+    id: 9,
+    category: "News",
+  },
+  {
+    id: 10,
+    category: "Gaming",
+  },
+  {
+    id: 11,
+    category: "AI",
+  },
 ];

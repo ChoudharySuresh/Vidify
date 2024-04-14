@@ -5,6 +5,8 @@ import VideoCard from "./VideoCard";
 import useScrollbarBottom from "../../hooks/useScrollbarBottom";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import FilterVideoCard from "./FilterVideoCard";
 
 const VideoList = () => {
   const [allVideos, setAllVideos] = useState([]);
@@ -55,11 +57,23 @@ const VideoList = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Filter
+  const isFilter = useSelector((store) => store.filter.isFilter);
+  const filterVideos = useSelector((store) => store.filter.filterVideos);
+  // console.log(filterVideos);
   return (
     <>
       <div className="flex flex-wrap gap-4 mt-3">
-        {allVideos?.length === 0 ? (
+        {allVideos?.length === 0 || filterVideos?.length === 0 ? (
           <Shimmer />
+        ) : isFilter ? (
+          filterVideos?.map((video) => {
+            return (
+              <Link key={video.id} to={"/watch?v=" + video.id.videoId}>
+                <FilterVideoCard info={video} />
+              </Link>
+            );
+          })
         ) : (
           allVideos?.map((video) => {
             return (

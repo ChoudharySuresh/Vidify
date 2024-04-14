@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { formatViewCount, timeAgo } from "../../Utils/helperFunction";
+import { timeAgo } from "../../Utils/helperFunction";
 
-const VideoCard = ({ info }) => {
+const FilterVideoCard = ({ info }) => {
   const thumbnail = info.snippet.thumbnails.medium;
   const { title, channelTitle, publishedAt, channelId } = info.snippet;
-  const { viewCount } = info.statistics;
 
   const [channelDetails, setChannelDetails] = useState(null);
 
@@ -20,7 +19,6 @@ const VideoCard = ({ info }) => {
   useEffect(() => {
     getChannelDetails();
   }, []);
-
   return (
     <div className="w-full md:w-[15rem] lg:w-[23.5rem] rounded-lg">
       {/* Video Thumbnail */}
@@ -48,7 +46,7 @@ const VideoCard = ({ info }) => {
           </h1>
           <p className="text-[#aaa] mt-1">{channelTitle}</p>
           <div className="text-[#aaa] flex gap-4">
-            <p>{formatViewCount(viewCount)}</p>
+            {/* <p>{formatViewCount(viewCount)}</p> */}
             <p>{timeAgo(publishedAt)}</p>
           </div>
         </div>
@@ -57,4 +55,4 @@ const VideoCard = ({ info }) => {
   );
 };
 
-export default VideoCard;
+export default FilterVideoCard;

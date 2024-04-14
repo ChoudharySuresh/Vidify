@@ -29,22 +29,22 @@ const SearchResultCard = ({ info }) => {
   //   console.log(channelId);
   //   console.log(url?.snippet?.thumbnails?.default);
   return (
-    <div className="flex gap-2 mt-6">
+    <div className="flex flex-col md:flex-row gap-2 mt-6">
       {/* Left Part of Search Card */}
       <div>
         <img
           src={thumbnail?.url}
           alt="searchResultImg"
-          className="rounded-xl"
+          className="rounded-xl md:w-[30rem] md:h-[15rem] object-fill"
         />
       </div>
       {/* Right side of Search Card */}
-      <div className="w-[70%]">
+      <div className="w-full md:w-[70%]">
         <div>
-          <h1 className="text-lg">{title}</h1>
+          <h1 className="text-base lg:text-lg">{title}</h1>
           <div className="flex gap-2 items-center text-[#aaa]">
             <p>{formatViewCount(viewsCount)}</p>
-            <div className="w-[0.5rem] h-[0.5rem] rounded-full bg-slate-600"></div>
+            <div className="w-[0.5rem] h-[0.5rem] rounded-full bg-[#aaa]"></div>
             <p>{timeAgo(publishedAt)}</p>
           </div>
         </div>

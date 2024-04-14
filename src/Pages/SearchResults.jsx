@@ -10,8 +10,8 @@ const SearchResults = () => {
       <div className="mx-4 my-1 ">
         {searchResults?.map((result) => {
           return (
-            <Link key={result.id} to={`/watch/${result?.id?.videoId}`}>
-              <SearchResultCard info={result} />;
+            <Link key={result.id} to={`/watch?v=${result?.id?.videoId}`}>
+              <SearchResultCard info={result} />
             </Link>
           );
         })}
