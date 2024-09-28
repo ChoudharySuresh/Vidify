@@ -7,10 +7,6 @@ function App() {
     <>
       <Header />
       <Body />
-      {/* <Routes>
-        <Route path="/" element={<Body />} />
-        <Route path="/watch" element={<WatchPage />} />
-      </Routes> */}
     </>
   );
 }
